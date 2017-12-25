@@ -1,0 +1,25 @@
+Print all process
+ps aux
+
+Print all process not by root
+ps -U root u -N
+u is for a complete column
+
+Use nice to run with different priority (-20 highest, 19 lowest, 0 is default)
+nice -n priority cmd
+Need sudo to increase priority in my system
+
+Watch disk usage every 2s
+watch df -h
+
+cmd & run cmd in background
+Ctrl-z to background (and pause)
+jobs list background jobs
+fg %number put in foreground
+bg %number put a ctrl-z suspended job running in background
+kill pid kill it
+kill -9 pid not send hangup kernel kill
+top view cpu mem usage, shift-m to sort by memory
+renice to change priority to a running process
+
+nohup start process don't respond to hangup. Will not be killed after user logout. A way to run server. It ignore input and stdout to nohup.out for default.

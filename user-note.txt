@@ -1,0 +1,7 @@
+useradd usermod userdel
+passwd: set password, lock account and expire password
+chage: change password expire info
+
+/etc/passwd: user info
+/etc/shadow: user password encrypted
+/etc/group: group info

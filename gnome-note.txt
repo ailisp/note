@@ -1,0 +1,5 @@
+* Add custom program to activities menu
+sudo dnf install alacarte
+
+* super+page down, super+page up switch workspace
+super+up down left right: maximize, normal, left half, right half

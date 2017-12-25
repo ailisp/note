@@ -1,0 +1,8 @@
+su root / sudo -i
+exit
+
+* In fedora add existing user to root:
+check `visudo' line %wheel ... not commented
+usermod -aG wheel USERNAME
+sudo
+

@@ -1,0 +1,6 @@
+New file
+nano
+Open file
+nano file
+C-o save
+C-x close

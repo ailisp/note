@@ -1,0 +1,38 @@
+find path action filter-> walk-directory and do action
+default action is print (show file name)
+default path is ., can give several path together
+default filter is none
+
+possible filter:
+-name "fullname" "regex-name"
+-iname "ignore-the-case-name"
+-maxdepth
+-type f or -type d: only search file or directory
+  -type d/f -empty
+-perm 0666
+  -perm 1666 2666 sticky bit / sgid bit set
+  -perm /u=s suid set
+  -perm /a=x executable
+  -perm /u=r readonly files
+-user who
+-group which
+-ctime: metadata changed (e.g. permission)
+-mtime days
+-atime days
+(or -mtime +50 -mtime -100, modified between 50 to 100 days)
+(note 50 is same as -50!)
+-mmin
+-size
+
+combine filter:
+-not (or !) -name
+-name "a.*" ! -name "*.c": find file name "a" and type not "c"
+-o means or
+
+Some example for actions:
+largest files (delete -r to get smallest files), a different action using -exec
+find . -type f -exec ls -s {} \; | sort -n -r | head -5
+list files
+find . -exec ls -ld {} \;
+delete
+find /tmp -type f -name "*.txt" -exec rm -f {} \;

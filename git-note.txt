@@ -1,0 +1,22 @@
+* Fork and upstream
+git clone git@github.com:YOUR-USERNAME/YOUR-FORKED-REPO.git
+cd YOUR-FORKED-REPO
+git remote add upstream git://github.com/ORIGINAL-DEV-USERNAME/REPO-YOU-FORKED-FROM.git
+git fetch upstream
+
+* Keep fork up to date
+git pull upsteam master
+git push (origin master)
+
+* Reset to one commit
+Just look: git checkout commit
+Really (after that will be lost): git reset --hard commit
+
+* Manage commit and commit message
+git rebase -i origin branch
+
+* Push a upstream branch to fork
+git fetch upstream
+git checkout -b newbranch upstream/newbranch
+git push -u origin newbranch
+

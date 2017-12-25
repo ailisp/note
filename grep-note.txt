@@ -1,0 +1,27 @@
+grep options regexp paths
+options:
+-i ignore case
+-w whole word
+-r recursively
+-v not matched
+-l show matched file paths
+-L show unmatched file paths
+-A1 print 1 line after each match
+-B2 print 2 lines before each match
+-C3 print 3 lines before and 3 lines after each match
+-H print file path for each match
+-q quiet, return 0 if found 1 if not found
+
+Less useful
+-x whole lines
+-z 0 byte lines
+-n line numbers
+-d --directories=read/recurse/skip
+-D --devices=read/skip
+-I ignore binary
+-R recurse and follow symlinks
+--include= search only these files
+--exclude= skip these files
+-c count of matches for each file
+
+If -r, no path given default to ., otherwise default to stdin

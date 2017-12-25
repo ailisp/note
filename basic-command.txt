@@ -1,0 +1,1 @@
+ls -lhtr /var/log  # view most recent items in /var/log
