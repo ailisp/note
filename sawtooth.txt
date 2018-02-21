@@ -1,3 +1,6 @@
+Install:
+install docker-ce then docker-composer, download sawtooth-default.yaml
+
 Run:
 sudo docker-compose -f sawtooth-default.yaml up
 
