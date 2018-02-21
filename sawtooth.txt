@@ -1,0 +1,37 @@
+Run:
+sudo docker-compose -f sawtooth-default.yaml up
+
+Close:
+C-c then
+sudo docker-compose -f sawtooth-default.yaml down
+
+Logging into the client container:
+sudo docker exec -it sawtooth-shell-default bash
+
+Access sawtooth server:
+- from client container: http://rest-api:8008/blocks
+- from outside (ubuntu guest or mac host): http://ipadress:8008/blocks
+
+List blocks, view block, global state, show state (from client container):
+sawtooth block list --url http://rest-api:8008
+sawtooth block show --url http://rest-api:8008 {BLOCK_ID}
+sawtooth state list --url http://rest-api:8008
+sawtooth state show --url http://rest-api:8008 {STATE_ADDRESS}
+
+Logging into other containers:
+the validator: sudo docker exec -it sawtooth-validator-default bash
+the rest api: change validator to rest-api
+settings transaction processor: settings-tp-default
+interkey transaction processor: intkey-tp-python
+xo transaction processor: xo-tp-python
+
+View logs:
+docker logs {CONTAINER}
+
+Configure:
+(From validator shell, because key is there):
+sawset proposal create \
+  --url http://rest-api:8008 \
+  --key /root/.sawtooth/keys/my_key.priv \
+  sawtooth.validator.transaction_families='[{"family": "intkey", "version": "1.0"}, {"family":"sawtooth_settings", "version":"1.0"}]'
+list settings: sawtooth settings list --url http://rest-api:8008
