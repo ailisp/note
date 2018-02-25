@@ -1,0 +1,1 @@
+dpkg -l "*package-name*": list installed packages

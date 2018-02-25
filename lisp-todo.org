@@ -1,0 +1,26 @@
+* lisp-env
+** Install packages
+lisp-env install <package-name>
+lisp-env install
+- Packages can be quicklisp or non quicklisp package.
+- Package can have system dependency, such as C libraries.
+- Package can have executable scripts need to put in PATH.
+- Installation instructions put in install.lisp
+
+** Create project skeleton
+lisp-env project new
+
+** Create a project-local environment
+lisp-env env new <name>
+. env/bin/activate
+deactivate
+- Like Python's virtualenv
+
+** Create and run lisp scripts
+lisp-env script new <name>
+
+** Create standalone lisp executables
+- Executable
+- Dockerfile
+
+** Commands help with integrate with ci systems
