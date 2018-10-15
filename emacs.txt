@@ -1,0 +1,2 @@
+Fix some weird error after emacs upgrade:
+M-: (byte-recompile-directory package-user-dir nil 'force)
