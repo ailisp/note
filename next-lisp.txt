@@ -1,0 +1,42 @@
+From Richard P. Gabriel, https://www.dreamsongs.com/WIB.html
+3.6 The Next Lisp
+
+I think there will be a next Lisp. This Lisp must be carefully designed, using the principles for success we saw in worse-is-better.
+
+There should be a simple, easily implementable kernel to the Lisp. That kernel should be both more than Scheme -- modules and macros -- and less than Scheme -- continuations remain an ugly stain on the otherwise clean manuscript of Scheme.
+
+The kernel should emphasize implementational simplicity, but not at the expense of interface simplicity. Where one conflicts with the other, the capability should be left out of the kernel. One reason is so that the kernel can serve as an extension language for other systems, much as GNU Emacs uses a version of Lisp for defining Emacs macros.
+
+Some aspects of the extreme dynamism of Common Lisp should be reexamined, or at least the tradeoffs reconsidered. For example, how often does a real program do this?
+
+    (defun f ...)
+
+    (dotimes (...)
+      ...
+      (setf (symbol-function 'f) #'(lambda ...))
+      ...)
+
+Implementations of the next Lisp should not be influenced by previous implementations to make this operation fast, especially at the expense of poor performance of all other function calls.
+
+The language should be segmented into at least four layers:
+
+    The kernel language, which is small and simple to implement. In all cases, the need for dynamic redefinition should be re-examined to determine that support at this level is necessary. I believe nothing in the kernel need be dynamically redefinable.
+    A linguistic layer for fleshing out the language. This layer may have some implementational difficulties, and it will probably have dynamic aspects that are too expensive for the kernel but too important to leave out.
+    A library. Most of what is in Common Lisp would be in this layer.
+    Environmentally provided epilinguistic features.
+
+In the first layer I include conditionals, function calling, all primitive data structures, macros, single values, and very basic object-oriented support.
+
+In the second layer I include multiple values and more elaborate object-oriented support. The second layer is for difficult programming constructs that are too important to leave to environments to provide, but which have sufficient semantic consequences to warrant precise definition. Some forms of redefinition capabilities might reside here.
+
+In the third layer I include sequence functions, the elaborate IO functions, and anything else that is simply implemented in the first and possibly the second layers. These functions should be linkable.
+
+In the fourth layer I include those capabilities that an environment can and should provide, but which must be standardized. A typical example is defmethod from CLOS. In CLOS, generic functions are made of methods, each method applicable to certain classes. The first layer has a definition form for a complete generic function -- that is, for a generic function along with all of its methods, defined in one place (which is how the layer 1 compiler wants to see it). There will also be means of associating a name with the generic function. However, while developing a system, classes will be defined in various places, and it makes sense to be able to see relevant (applicable) methods adjacent to these classes. defmethod is the construct to define methods, and defmethod forms can be placed anywhere amongst other definitional forms.
+
+But methods are relevant to each class on which the method is specialized, and also to each subclass of those classes. So, where should the unique defmethod form be placed? The environment should allow the programmer to see the method definition in any or all of these places, while the real definition should be in some particular place. That place might as well be in the single generic function definition form, and it is up to the environment to show the defmethod equivalent near relevant classes when required, and to accept as input the source in the form of a defmethod (which it then places in the generic function definition).
+
+We want to standardize the defmethod form, but it is a linguistic feature provided by the environment. Similarly, many uses of elaborate lambda-list syntax, such as keyword arguments, are examples of linguistic support that the environment can provide possibly by using color or other adjuncts to the text.
+
+In fact, the area of function-function interfaces should be re-examined to see what sorts of argument naming schemes are needed and in which layer they need to be placed.
+
+Finally, note that it might be that every layer 2 capability could be provided in a layer 1 implementation by an environment.
