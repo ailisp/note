@@ -1,2 +1,35 @@
 Fix some weird error after emacs upgrade:
 M-: (byte-recompile-directory package-user-dir nil 'force)
+
+| Unit              | char      | word        | sentence      | paragraph | line | sexp                    | defun |
+|-------------------+-----------+-------------+---------------+-----------+------+-------------------------+-------|
+| Forward Kill      | -         | M-d         | M-k           | -         | C-k  | C-M-k                   | -     |
+| Forward Delete    | C-d       | -           | -             | -         | -    | -                       | -     |
+| Backward Kill     | -         | M-Backspace | C-x Backspace | -         | -    | Esc C-Backspace         | -     |
+| Backward Delete   | Backspace | -           | -             | -         | -    | -                       | -     |
+| Forward Move      | C-f       | M-f         | -             | C-Down    | C-n  | C-M-f                   | -     |
+| Backward Move     | C-b       | M-b         | -             | C-Up      | C-p  | C-M-b                   | -     |
+| Forward Mark      | -         | M-@         | -             | -         | -    | C-c m / C-M-@ / C-M-SPC | C-M-h |
+| Backward Mark     | -         | -           | -             | -         | -    | -                       | -     |
+| Move to Beginning | -         | -           | -             | -         | C-a  | -                       | C-M-a |
+| Move to End       | -         | -           | -             | -         | C-e  | -                       | C-M-e |
+
+Cider useful keys
+| Key       | Command                          |
+|-----------+----------------------------------|
+| C-x C-e   | cider-eval-last-sexp             |
+| C-c M-p   | cider-insert-last-sexp-to-repl   |
+| C-c C-m   | cider-macroexpand-1              |
+| C-c M-m   | cider-macroexpand-all            |
+| C-c C-b   | cider-interrupt                  |
+| C-c M-n n | cider-repl-set-ns                |
+| C-c C-z   | cider-switch-to-repl-buffer      |
+| C-c C-o   | cider-find-and-clear-repl-output |
+| C-c C-k   | cider-load-buffer                |
+| C-c M-n r | cider-ns-refresh                 |
+| C-c C-d * | cider-doc *                      |
+| C-c M-i   | cider-inspect                    |
+| C-c M-t * | cider-toggle *                   |
+| C-c C-t * | cider-test *                     |
+| M-.       | cider-find-var                   |
+| M-,       | cider-pop-back                   |
