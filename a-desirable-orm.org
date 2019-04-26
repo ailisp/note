@@ -1,0 +1,3 @@
+- Still use sql, basic builder for helping sql injection
+- queries are either executed to generate json(json equivalent native object) by default, or array of objects, if given objects. this arrays of objects are only place where shows we're an "orm". For most api design, or just operation in json, no need to worry about object at all
+- no lazy load or eager load, no has_one, belongs_to, has_many, many_to_many, all logic is defined by sql, that's both easy for programmer and arbitrary powerful. Eager load: sql joins, query to either json or two object as a combination. Has*belongs*many relationship: you've defined table in sql, you control what foreign key/index table is connected together
