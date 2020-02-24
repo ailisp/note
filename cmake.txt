@@ -1,0 +1,9 @@
+Create two build targets in your CMakeLists.txt file.
+add_executable( hoge hoge.cpp )
+add_executable( hoge2 hoge2.cpp )
+For the first time use cmake . to update the Makefile.
+Then you can run (from same directory as your CMakeLists.txt file,
+cmake --build . --target hoge
+For the other build target use
+cmake --build . --target hoge2
+Use cmake --build . to build all targets
